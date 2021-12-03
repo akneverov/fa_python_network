@@ -29,9 +29,7 @@ class DHClient(Client):
     def exchange_keys(self):
         self.sock.send(str(self.public_key).encode())
 
-        server_pub_key = int(self.sock.recv(1024))
-        self.DH.public_key1 = server_pub_key
-
+        self.DH.public_key1 = int(self.sock.recv(1024))
         self.sock.send(str(self.DH.generate_partial_key()).encode())
 
         server_partial_key = int(self.sock.recv(1024))
