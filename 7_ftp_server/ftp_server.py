@@ -33,7 +33,6 @@ class FTPServer(ThreadedServer):
                 response = self.fileManager.showFiles()
         elif len(msg) == 2:
             command, name = msg[0], msg[1]
-            print(command, name)
             if command == 'mkdir':
                 response = self.fileManager.createFolder(name)
             elif command == 'rmdir':
