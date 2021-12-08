@@ -6,7 +6,7 @@ import hashlib
 app = Flask(__name__)
 
 @app.route('/user', methods=['POST'])
-def hello_world_post():
+def registerUser():
     users = load_users()
     login = request.form.get('login')
     password = request.form.get('password')
@@ -22,7 +22,7 @@ def hello_world_post():
     return {'status': 'success'}, 200
 
 @app.route('/user', methods=['GET'])
-def hello_world_get():
+def getUsers():
     users = load_users()
     if not users:
         return {'status': 'no registered users'}
